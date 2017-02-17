@@ -4,7 +4,8 @@
     <h1>Create user</h1>
     {!! Form::open([
         'method'    =>  'POST',
-        'action'    =>  'AdminUsersController@store'
+        'action'    =>  'AdminUsersController@store',
+        'file'      =>  true
     ]) !!}
 
     <div class="form-group">
@@ -29,8 +30,8 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('status', 'Status') !!}
-        {!! Form::select('active', [
+        {!! Form::label('is_active', 'Status') !!}
+        {!! Form::select('is_active', [
                         0 => 'Deactive',
                         1 => 'Active'
         ] , 1, ['class' => 'form-control']) !!}
@@ -42,14 +43,23 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label('repassword', 'RePassword') !!}
-        {!! Form::password('repassword', ['placeholder' => '********', 'class' => 'form-control']) !!}
+        {!! Form::label('password_confirmation', 'Confirm Password') !!}
+        {!! Form::password('password_confirmation', ['placeholder' => '********', 'class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::label('photo', 'User Photo') !!}
+        {!! Form::file('photo_id', ['class' => 'form-control']) !!}
     </div>
 
 
     <div class="form-group">
         {!! Form::submit('Submit', ['class' =>  'btn btn-primary']) !!}
     </div>
+
+    {!! Form::close() !!}
+
+    @include('includes.form_error')
 
 @endsection
 

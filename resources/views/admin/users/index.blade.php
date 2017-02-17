@@ -23,8 +23,8 @@
                 <td>{{$user->id}}</td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td>{{$user->role->name}}</td>
-                <td>{{$user->active ? 'Yes' : 'No'}}</td>
+                <td>{{$user->role_id ? $user->role->name : 'No role'}}</td>
+                <td>{{$user->is_active ? 'Yes' : 'No'}}</td>
                 <td>{{$user->created_at->diffForHumans()}}</td>
                 <td>{{$user->updated_at->diffForHumans()}}</td>
             </tr>
