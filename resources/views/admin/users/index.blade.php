@@ -4,6 +4,14 @@
 
     <h1>Users</h1>
 
+    @if(Session::has('user_deleted'))
+        <div class="row">
+            <div class="col-xs-6 alert alert-danger">
+                {{Session::get('user_deleted')}}
+            </div>
+        </div>
+    @endif
+
     <table class="table table-hover">
         <thead>
             <tr>

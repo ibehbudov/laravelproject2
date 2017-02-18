@@ -18,10 +18,6 @@ class AdminUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function __construct()
-//    {
-//        $this->middleware('auth');
-//    }
 
     public function index()
     {
@@ -140,8 +136,18 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        unlink(public_path() . $user->photo->file);
+
+        $user->photo->delete();
+
+        $user->delete();
+
+        $request->session()->flash('user_deleted', 'The user has been deleted');
+
+        return redirect('admin/users');
     }
 }

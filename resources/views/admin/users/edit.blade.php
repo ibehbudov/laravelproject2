@@ -60,10 +60,19 @@
 
 
         <div class="form-group">
-            {!! Form::submit('Submit', ['class' =>  'btn btn-primary']) !!}
-        </div>
+            {!! Form::submit('Submit', ['class' =>  'btn btn-primary pull-left']) !!}
 
         {!! Form::close() !!}
+
+            {!! Form::open([
+                    'method'    =>  'DELETE',
+                    'action'    =>  ['AdminUsersController@destroy', $user->id]
+            ]) !!}
+
+            {!! Form::submit('Delete', ['class'     =>  'btn btn-danger pull-right']) !!}
+            {!! Form::close() !!}
+
+        </div>
 
         </div>
     </div>
